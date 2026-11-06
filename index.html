@@ -65,6 +65,28 @@ h1{font-size:1.9rem;color:var(--green)}
 .soon .ar{white-space:nowrap;overflow:hidden;font-family:var(--ar);font-size:1.35rem;color:var(--gold);opacity:.75;direction:rtl;text-align:right;line-height:1.4}
 .soon h3{font-size:1.05rem;color:#4d5a52;font-weight:700}
 .soon .tag{align-self:flex-start;margin-top:auto;font-size:.72rem;font-weight:600;letter-spacing:.04em;color:#7a5c1e;background:var(--gold-soft);border-radius:999px;padding:2px 9px}
+/* Ana ekrana ekle kartı */
+.a2hs{margin:22px 0 4px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.a2hs[hidden]{display:none}
+.a2hs .hd{display:flex;gap:14px;align-items:center}
+.a2hs .appico{width:52px;height:52px;border-radius:12px;flex:none;display:grid;place-items:center;color:#f4c430;background:linear-gradient(160deg,#2f7a5f,#1f5a45 60%,#184a39);box-shadow:0 2px 6px rgba(31,90,69,.3)}
+.a2hs h2{font-size:1.12rem;color:var(--green)}
+.a2hs .hd p{margin:3px 0 0;color:var(--muted);font-size:.9rem;line-height:1.4}
+.a2hs .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.a2hs button{font:inherit;font-size:.9rem;font-weight:600;border-radius:999px;padding:8px 16px;cursor:pointer;border:1px solid var(--green)}
+.a2hs .pri{background:var(--green);color:#fff}
+.a2hs .pri:hover{background:var(--green-2)}
+.a2hs .sec{background:transparent;color:var(--green);border-color:var(--line)}
+.a2hs .steps{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;counter-reset:s}
+.a2hs .steps li{display:flex;gap:12px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:.92rem;counter-increment:s}
+.a2hs .steps li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;font-size:.8rem;font-weight:700;display:grid;place-items:center}
+.a2hs .tx{flex:1 1 auto;min-width:0}
+.a2hs .ui{flex:none;margin-left:auto;min-width:40px;height:34px;padding:0 8px;border-radius:9px;background:#fff;border:1px solid #d9d3c4;display:grid;place-items:center;color:#0a7aff;font-weight:600;font-size:.85rem}
+.a2hs .ui.and{color:#1f2a24}
+.a2hs .warn{margin:12px 0 0;background:var(--gold-soft);border-radius:10px;padding:9px 12px;font-size:.84rem;color:#6b5420}
+.a2hs .warn b{color:#5a4415}
+.a2hs .sub{margin:6px 0 0;font-size:.82rem;color:var(--muted)}
+@media (max-width:420px){.a2hs{padding:14px}.a2hs .appico{width:46px;height:46px}.a2hs button{flex:1 1 auto}}
 @media (max-width:420px){.apps{grid-template-columns:1fr}.soons{grid-template-columns:1fr 1fr}.soon{padding:12px}.soon .ar{font-size:1.08rem}.soon h3{font-size:.95rem}h1{font-size:1.6rem}}
 </style>
 </head>
@@ -77,6 +99,18 @@ h1{font-size:1.9rem;color:var(--green)}
   <section class="hero">
     <h1>Giray Akademi</h1>
     <p class="lead">İslami ilimler çalışma araçları. İhtisas, eğitim görevlisi ve müftülük sınavlarına hazırlık için hazırlanmış çalışma programları. Çalışmak istediğiniz programı seçin.</p>
+  </section>
+
+  <section class="a2hs" id="a2hs" hidden aria-label="Ana ekrana ekle">
+    <div class="hd">
+      <span class="appico" aria-hidden="true"><svg viewBox="24 22 152 96" width="30" height="19" fill="currentColor"><rect x="45" y="33" width="112" height="12"/><rect x="45" y="33" width="12" height="62"/><rect x="28" y="80" width="29" height="15"/><rect x="145" y="33" width="12" height="62"/><rect x="145" y="80" width="27" height="15"/><rect x="97" y="33" width="13" height="70"/><rect x="77" y="97" width="53" height="15"/></svg></span>
+      <div>
+        <h2 id="a2hsT">Giray Akademi'yi ana ekranınıza ekleyin</h2>
+        <p id="a2hsP">Bir uygulama gibi tek dokunuşla açılır, tam ekran çalışır.</p>
+      </div>
+    </div>
+    <div id="a2hsBody"></div>
+    <div class="acts" id="a2hsActs"></div>
   </section>
 
   <div class="section-title">Programlar</div>
@@ -157,6 +191,87 @@ h1{font-size:1.9rem;color:var(--green)}
 
   <p class="note">İlerlemeniz her programda yalnızca bu cihazda, tarayıcınızda saklanır.</p>
 </main>
+
+<script>
+(function(){
+  var KEY='ga_a2hs', DAY=864e5;
+  var card=document.getElementById('a2hs'); if(!card) return;
+  var body=document.getElementById('a2hsBody'), acts=document.getElementById('a2hsActs');
+  var T=document.getElementById('a2hsT'), P=document.getElementById('a2hsP');
+  function get(){try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){return null}}
+  function set(v){try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}}
+
+  // Ortam tanıma
+  var ua=navigator.userAgent||'';
+  var q=''; try{q=(new URLSearchParams(location.search)).get('a2hs')||''}catch(e){}   // örnek için: ?a2hs=ios|android|inapp
+  var standalone=false; try{standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true}catch(e){}
+  var ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
+  var android=/Android/.test(ua);
+  var inapp=/FBAN|FBAV|Instagram|WhatsApp|Line\/|Twitter|TikTok|Snapchat|; wv\)/.test(ua);
+  var crios=/CriOS/.test(ua);
+  if(q){ios=q.indexOf('ios')>-1;android=q.indexOf('android')>-1;inapp=q.indexOf('inapp')===0;crios=q.indexOf('chrome')>-1;standalone=false}   // örnek: ?a2hs=ios | ios-chrome | android | inapp-ios | inapp-android (+ -open)
+  if(standalone||!(ios||android||inapp)) return;           // ana ekrandan açıldıysa ya da masaüstündeyse çıkmaz
+
+  // Daha önce cevap verildiyse
+  var s=get();
+  if(!q&&s){
+    if(s.done) return;                                       // eklendi
+    if(s.later>=2) return;                                   // ikinci kez de ertelendi, bir daha sorulmaz
+    if(Date.now()-s.t<30*DAY) return;                        // 30 gün dolmadı
+  }
+
+  var deferred=null;
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;if(android&&!inapp)draw()});
+  window.addEventListener('appinstalled',function(){set({done:1});card.hidden=true});
+
+  var SHARE='<svg width="18" height="20" viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V2"/><path d="M7 7l5-5 5 5"/><path d="M5 11H4v13h16V11h-1"/></svg>';
+  var PLUS='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f2a24" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg>';
+  var DOTS='<span style="font-size:1.2rem;letter-spacing:1px;line-height:1">⋮</span>';
+  var NOTE='<p class="warn"><b>Önemli:</b> Tarayıcıda yaptığınız çalışmalar (ilerleme, yanlışlarım listesi) ana ekrandaki uygulamaya taşınmaz. Bu yüzden çalışmaya başlamadan önce eklemeniz önerilir.</p>';
+
+  function btn(cls,txt,fn){var b=document.createElement('button');b.type='button';b.className=cls;b.textContent=txt;b.onclick=fn;acts.appendChild(b);return b}
+  function later(){var o=get()||{};set({t:Date.now(),later:(o.later||0)+1});card.hidden=true}
+
+  function draw(open){
+    body.innerHTML='';acts.innerHTML='';
+    if(inapp){
+      T.textContent='Bu sayfa bir uygulamanın içinde açıldı';
+      P.textContent='Ana ekrana eklemek ve ilerlemenizin kaybolmaması için sayfayı tarayıcınızda açın.';
+      body.innerHTML='<ol class="steps"><li><span class="tx">Sağ üstteki menüye dokunun.</span><span class="ui and">'+DOTS+'</span></li><li><span class="tx">'+(ios?'<b>Safari’de aç</b>':'<b>Tarayıcıda aç</b> ya da <b>Chrome’da aç</b>')+' seçeneğini seçin.</span></li></ol><p class="sub">Menüde bu seçenek yoksa bağlantıyı kopyalayıp '+(ios?'Safari’ye':'Chrome’a')+' yapıştırın.</p>';
+      var c=btn('pri','Bağlantıyı kopyala',function(){try{navigator.clipboard.writeText(location.origin+'/');c.textContent='Kopyalandı ✓'}catch(e){}});
+      btn('sec','Şimdi değil, devam et',later);
+      return;
+    }
+    if(android&&deferred){
+      btn('pri','Yükle',function(){deferred.prompt();deferred.userChoice.then(function(r){if(r.outcome==='accepted'){set({done:1});card.hidden=true}deferred=null})});
+      btn('sec','Şimdi değil, devam et',later);
+      return;
+    }
+    if(!open){
+      btn('pri','Nasıl eklerim?',function(){draw(true)});
+      btn('sec','Şimdi değil, devam et',later);
+      return;
+    }
+    if(ios){
+      body.innerHTML='<ol class="steps">'+
+        '<li><span class="tx">'+(crios?'Adres çubuğundaki <b>Paylaş</b> düğmesine dokunun.':'Safari’de alttaki <b>Paylaş</b> düğmesine dokunun (iPad’de sağ üstte).')+'</span><span class="ui">'+SHARE+'</span></li>'+
+        '<li><span class="tx">Açılan listeyi kaydırıp <b>Ana Ekrana Ekle</b>’yi seçin.</span><span class="ui">'+PLUS+'</span></li>'+
+        '<li><span class="tx">Sağ üstteki <b>Ekle</b>’ye dokunun.</span><span class="ui">Ekle</span></li>'+
+        '</ol>'+(crios?'':'<p class="sub">Paylaş düğmesini göremiyorsanız önce alttaki ••• düğmesine dokunun.</p>')+NOTE;
+    }else{
+      body.innerHTML='<ol class="steps">'+
+        '<li><span class="tx">Chrome’da sağ üstteki menüye dokunun.</span><span class="ui and">'+DOTS+'</span></li>'+
+        '<li><span class="tx"><b>Ana ekrana ekle</b> ya da <b>Uygulamayı yükle</b>’yi seçin.</span><span class="ui">'+PLUS+'</span></li>'+
+        '<li><span class="tx">Açılan pencerede <b>Yükle</b> / <b>Ekle</b>’ye dokunun.</span><span class="ui and">Yükle</span></li>'+
+        '</ol>';
+    }
+    btn('pri','Ekledim',function(){set({done:1});card.hidden=true});
+    btn('sec','Şimdi değil, devam et',later);
+  }
+  draw(q.indexOf('open')>-1);
+  card.hidden=false;
+})();
+</script>
 
 <div class="sig"><span>© 2026 Her hakkı saklıdır</span><i>·</i><span>Designed by: <b>M.ALPKİRAY</b></span></div>
 </body>
