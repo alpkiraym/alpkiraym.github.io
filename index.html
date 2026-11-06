@@ -60,7 +60,12 @@ h1{font-size:1.9rem;color:var(--green)}
 .sig{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:5px 12px calc(5px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font-family:var(--sans);font-size:.7rem;letter-spacing:.02em;color:var(--muted)}
 .sig b{color:var(--green);font-weight:600}
 .sig i{font-style:normal;opacity:.5}
-@media (max-width:420px){.apps{grid-template-columns:1fr}h1{font-size:1.6rem}}
+.soons{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.soon{background:var(--card);border:1px dashed #d6cdb6;border-radius:12px;padding:14px 16px 12px;display:flex;flex-direction:column;gap:6px;min-height:104px;cursor:default}
+.soon .ar{white-space:nowrap;overflow:hidden;font-family:var(--ar);font-size:1.35rem;color:var(--gold);opacity:.75;direction:rtl;text-align:right;line-height:1.4}
+.soon h3{font-size:1.05rem;color:#4d5a52;font-weight:700}
+.soon .tag{align-self:flex-start;margin-top:auto;font-size:.72rem;font-weight:600;letter-spacing:.04em;color:#7a5c1e;background:var(--gold-soft);border-radius:999px;padding:2px 9px}
+@media (max-width:420px){.apps{grid-template-columns:1fr}.soons{grid-template-columns:1fr 1fr}.soon{padding:12px}.soon .ar{font-size:1.08rem}.soon h3{font-size:.95rem}h1{font-size:1.6rem}}
 </style>
 </head>
 <body>
@@ -125,6 +130,29 @@ h1{font-size:1.9rem;color:var(--green)}
         <div class="go">Programı aç <small>→</small></div>
       </div>
     </a>
+  </div>
+
+  <div class="section-title">Yakında · hazırlanıyor</div>
+  <!-- Bir ders hazır olunca kartı buradan silinir, yukarıdaki "Programlar" bölümüne tam kart olarak eklenir. -->
+  <div class="soons">
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">المختار للفتوى</span><h3>Muhtâr li'l-Fetvâ</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">علوم القرآن</span><h3>Tefsir Usulü</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">أصول الفقه</span><h3>Fıkıh Usulü</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">قضايا عقدية</span><h3>Güncel İnanç Problemleri</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">التخريج</span><h3>Tahriç</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">الأحوال الشخصية</span><h3>Ahvalu'ş-Şahsiyye</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">الفرائض</span><h3>Feraiz</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">فقه الحديث</span><h3>Hadis Anlam ve Yorum</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">الفرق الإسلامية</span><h3>İslam Mezhepleri</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">تاريخ الأديان</span><h3>Dinler Tarihi</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">التصوف</span><h3>Tasavvuf</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">أصول الفتوى</span><h3>Fetva Usulü</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">النوازل الفقهية</span><h3>Güncel Fıkıh Meseleleri</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">قضايا حديثية</span><h3>Güncel Hadis Problemleri</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">قضايا تفسيرية</span><h3>Güncel Tefsir Problemleri</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">الفلسفة الإسلامية</span><h3>İslam Felsefesi</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">الفقه المقارن</span><h3>Mukayeseli Fıkıh</h3><span class="tag">Yakında</span></div>
+    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">التشريعات</span><h3>Mevzuat</h3><span class="tag">Yakında</span></div>
   </div>
 
   <p class="note">İlerlemeniz her programda yalnızca bu cihazda, tarayıcınızda saklanır.</p>
