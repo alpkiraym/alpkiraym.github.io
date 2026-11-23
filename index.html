@@ -321,17 +321,15 @@ h1{font-size:1.9rem;color:var(--green)}
 </main>
 
 <script>
-/* Yeni ders: data-yeni="YYYY-AA-GG" taşıyan kart, eklenişinden sonraki 30 gün içinde
-   bu cihazda ilk açılışta en üstte "Yeni" rozetiyle görünür; sonraki açılışlarda normal sırasında.
+/* Yeni ders: data-yeni="YYYY-AA-GG" taşıyan kart, eklendiği günden itibaren 10 gün boyunca
+   her açılışta en üstte "Yeni" rozetiyle görünür; sonra kendi sırasına geçer.
    Deneme: adres sonuna ?yeni=1 */
 (function(){
-  var KEY='ga_yeni', GUN=30, zorla=/[?&]yeni=1/.test(location.search), gor=[];
-  try{gor=JSON.parse(localStorage.getItem(KEY)||'[]')||[]}catch(e){}
+  var GUN=10, zorla=/[?&]yeni=1/.test(location.search);
   var kap=document.querySelector('.apps'); if(!kap) return;
   var yeni=[].slice.call(kap.querySelectorAll('a.app[data-yeni]')).filter(function(a){
-    var t=Date.parse(a.getAttribute('data-yeni')); if(isNaN(t)) return false;
-    var k=a.getAttribute('href');
-    return zorla || (Date.now()-t < GUN*864e5 && gor.indexOf(k)<0);
+    var t=Date.parse(a.getAttribute('data-yeni')+'T00:00:00'); if(isNaN(t)) return false;
+    return zorla || (Date.now()>=t && Date.now()-t < GUN*864e5);
   });
   yeni.sort(function(a,b){return Date.parse(b.getAttribute('data-yeni'))-Date.parse(a.getAttribute('data-yeni'))});
   for(var i=yeni.length-1;i>=0;i--){
@@ -339,9 +337,7 @@ h1{font-size:1.9rem;color:var(--green)}
     var r=document.createElement('span'); r.className='yeni-tag'; r.textContent='Yeni';
     a.querySelector('.ico').appendChild(r);
     kap.insertBefore(a,kap.firstChild);
-    if(gor.indexOf(a.getAttribute('href'))<0) gor.push(a.getAttribute('href'));
   }
-  if(yeni.length && !zorla){try{localStorage.setItem(KEY,JSON.stringify(gor))}catch(e){}}
 })();
 </script>
 <script>
