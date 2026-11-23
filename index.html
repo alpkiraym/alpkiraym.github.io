@@ -95,7 +95,8 @@ h1{font-size:1.9rem;color:var(--green)}
 .app.is-yeni .yeni-tag{display:inline-block;position:absolute;right:-14px;top:-10px;font:700 .66rem/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#4a3710;background:#f4c430;border-radius:999px;padding:4px 8px;box-shadow:0 1px 3px rgba(0,0,0,.2);z-index:1}
 .app h2 .ks{display:none}
 /* Telefon ve tablet: kartların yerine simgeler (masaüstü olduğu gibi) */
-@media (max-width:1024px){
+/* Tablet yatayda da (iPad 1180–1366 piksel) simge düzeni: dokunmatik ekran ölçütü */
+@media (max-width:1024px), (hover:none) and (pointer:coarse) and (max-width:1440px){
 .apps{grid-template-columns:repeat(4,1fr);gap:30px 14px}
 .app{background:none;border:0;box-shadow:none;border-radius:0;align-items:center;overflow:visible}
 .app:hover{transform:none}
