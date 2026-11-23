@@ -248,12 +248,23 @@ h1{font-size:1.9rem;color:var(--green)}
         <div class="go">Programı aç <small>→</small></div>
       </div>
     </a>
+    <a class="app" href="/ahval/">
+      <div class="top">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14.5" r="5.5"/><circle cx="15" cy="14.5" r="5.5"/><path d="M15 9l-1.8-2.2L15 4.6l1.8 2.2z"/></svg></span>
+        <span class="ar">الأحوال الشخصية</span>
+        <h2>Ahvalu'ş-Şahsiyye</h2>
+      </div>
+      <div class="body">
+        <p>Nikâhın şartlarından evlilik engellerine, velayet, kefâet, mehir ve nafakaya.</p>
+        <div class="facts"><span>11 ünite</span><span>58 kavram</span><span>279 soru</span></div>
+        <div class="go">Programı aç <small>→</small></div>
+      </div>
+    </a>
   </div>
 
   <div class="section-title">Yakında · hazırlanıyor</div>
   <!-- Bir ders hazır olunca kartı buradan silinir, yukarıdaki "Programlar" bölümüne tam kart olarak eklenir. -->
   <div class="soons">
-    <div class="soon" aria-disabled="true"><span class="ar" lang="ar">الأحوال الشخصية</span><h3>Ahvalu'ş-Şahsiyye</h3><span class="tag">Yakında</span></div>
     <div class="soon" aria-disabled="true"><span class="ar" lang="ar">الفرق الإسلامية</span><h3>İslam Mezhepleri</h3><span class="tag">Yakında</span></div>
     <div class="soon" aria-disabled="true"><span class="ar" lang="ar">تاريخ الأديان</span><h3>Dinler Tarihi</h3><span class="tag">Yakında</span></div>
     <div class="soon" aria-disabled="true"><span class="ar" lang="ar">التصوف</span><h3>Tasavvuf</h3><span class="tag">Yakında</span></div>
@@ -447,6 +458,7 @@ h1{font-size:1.9rem;color:var(--green)}
     pusula:'<circle cx="12" cy="12" r="9.5"/><path d="M15.6 8.4l-2 5.2-5.2 2 2-5.2z"/><path d="M12 2.5v1.8M12 19.7v1.8M2.5 12h1.8M19.7 12h1.8"/>',
     buyutec:'<circle cx="10" cy="10" r="7"/><path d="M15.2 15.2L21 21"/><path d="M7 8.3h6M7 11.7h4"/>',
     anahtar:'<circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L20 3.5"/><path d="M16.6 6.9l2.6 2.6"/><path d="M14.1 9.4l2 2"/>',
+    yuzuk:'<circle cx="9" cy="14.5" r="5.5"/><circle cx="15" cy="14.5" r="5.5"/><path d="M15 9l-1.8-2.2L15 4.6l1.8 2.2z"/>',
     pasta:'<path d="M11 4a8 8 0 1 0 8 8h-8z"/><path d="M14 2.6A8 8 0 0 1 21.4 10H14z"/>'
   };
   // Yeni ders hazır olunca buraya bir satır eklenir (ana sayfadaki "Programlar" sırasıyla aynı).
@@ -461,7 +473,8 @@ h1{font-size:1.9rem;color:var(--green)}
     {k:'inanc',  ad:'Güncel İnanç Problemleri', url:'/guncel_inanc/',      i:'pusula'},
     {k:'tahric', ad:'Tahriç Usulü',           url:'/tahric/',              i:'buyutec'},
     {k:'feraiz', ad:'Feraiz',                 url:'/feraiz/',              i:'pasta'},
-    {k:'hay',    ad:'Hadis Anlam ve Yorum',   url:'/hadis_anlam_ve_yorum/', i:'anahtar'}
+    {k:'hay',    ad:'Hadis Anlam ve Yorum',   url:'/hadis_anlam_ve_yorum/', i:'anahtar'},
+    {k:'ahval',  ad:"Ahvalu'ş-Şahsiyye",      url:'/ahval/',               i:'yuzuk'}
   ];
   var MAIL = 'alpkiraymehmet@gmail.com';
   function rd(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
