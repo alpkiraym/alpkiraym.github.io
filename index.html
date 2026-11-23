@@ -96,14 +96,14 @@ h1{font-size:1.9rem;color:var(--green)}
 .app h2 .ks{display:none}
 /* Telefon ve tablet: kartların yerine simgeler (masaüstü olduğu gibi) */
 @media (max-width:1024px){
-.apps{grid-template-columns:repeat(4,1fr);gap:24px 12px}
+.apps{grid-template-columns:repeat(4,1fr);gap:30px 14px}
 .app{background:none;border:0;box-shadow:none;border-radius:0;align-items:center;overflow:visible}
 .app:hover{transform:none}
 .app .top{background:none;min-height:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:8px;position:static}
-.app .top .ico{width:84px;height:84px;margin:0;border-radius:20px;background:linear-gradient(160deg,#2f7a5f,#1f5a45 60%,#184a39);box-shadow:0 2px 8px rgba(31,90,69,.28)}
-.app .top .ico svg{width:40px;height:40px}
+.app .top .ico{width:min(132px,15vw);height:min(132px,15vw);margin:0;border-radius:30px;background:linear-gradient(160deg,#2f7a5f,#1f5a45 60%,#184a39);box-shadow:0 2px 8px rgba(31,90,69,.28)}
+.app .top .ico svg{width:58px;height:58px}
 .app .top .ar,.app .body{display:none}
-.app .top h2{font-family:var(--sans);font-size:.92rem;font-weight:600;color:var(--ink);text-align:center;line-height:1.25;max-width:150px}
+.app .top h2{font-family:var(--sans);font-size:1.05rem;font-weight:600;color:var(--ink);text-align:center;line-height:1.25;max-width:180px}
 .app h2 .uz{display:none}.app h2 .ks{display:inline}
 .app:active .ico{transform:scale(.96)}
 .app.is-yeni{border:0;box-shadow:none}
@@ -114,7 +114,9 @@ h1{font-size:1.9rem;color:var(--green)}
 .soon h3{font-family:var(--sans);font-size:.76rem;font-weight:600;color:#7d837b;line-height:1.25}
 .soon .tag{display:none}
 }
-@media (max-width:560px){.apps{grid-template-columns:repeat(2,1fr)}.soons{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.apps{grid-template-columns:repeat(2,1fr);gap:26px 14px}.soons{grid-template-columns:repeat(3,1fr)}
+.app .top .ico{width:min(118px,34vw);height:min(118px,34vw);border-radius:28px}.app .top .ico svg{width:54px;height:54px}
+.app .top h2{font-size:1rem;max-width:170px}.app .top{gap:10px}}
 </style>
 </head>
 <body>
