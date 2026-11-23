@@ -82,5 +82,12 @@
   "url": "/ahval/",
   "i": "yuzuk",
   "svg": "<circle cx=\"9\" cy=\"14.5\" r=\"5.5\"/><circle cx=\"15\" cy=\"14.5\" r=\"5.5\"/><path d=\"M15 9l-1.8-2.2L15 4.6l1.8 2.2z\"/>"
+ },
+ {
+  "k": "mezhep",
+  "ad": "İslam Mezhepleri",
+  "url": "/islam_mezhepleri/",
+  "i": "tabela",
+  "svg": "<path d=\"M12 3v18M8.5 21h7\"/><path d=\"M12 5.5h6.5l2 2-2 2H12\"/><path d=\"M12 10.5H5.5l-2 2 2 2H12\"/><path d=\"M12 15.5h5l1.5 1.5-1.5 1.5h-5\"/>"
  }
 ]
