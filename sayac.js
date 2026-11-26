@@ -3,7 +3,7 @@
    - Ders adı adresin ilk klasöründen alınır (/mecelle/ → mecelle, ana sayfa → ana).
    - Her tarayıcı oturumunda site için bir kez, her ders için de ayrıca bir kez sayılır.
    - Sayfa açık durdukça "şu an çevrimiçi" listesinde (hangi derste olduğuyla) görünür, kapanınca düşer.
-   - Ana sayfa: #ziyaretci şeridi + ders kartı/simgelerinde çevrimiçi rozeti (+ masaüstü kartta haftalık ziyaret).
+   - Ana sayfa: #ziyaretci şeridi + ders kartı/simgelerinde çevrimiçi rozeti (hep görünür; 0 iken soluk) (+ masaüstü kartta haftalık ziyaret).
    - Dersler: sayfanın en sonunda (içerik bitince) o dersin rakamları; alt çubuğa dokunulmaz.
    - Önizleme: adres sonuna ?sayac=demo → Firebase'e bağlanmadan örnek rakamlar.
    Veriler: Firebase Realtime Database · proje ihtisas-3c6f9
@@ -29,6 +29,8 @@ const CSS = `
 .zy-rz{position:absolute;right:-6px;bottom:-6px;z-index:1;display:inline-flex;align-items:center;gap:4px;padding:3px 7px 3px 6px;border-radius:999px;background:#fff;color:#1f5a45;font:700 .72rem/1 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.22);font-variant-numeric:tabular-nums}
 .zy-rz i,.zy-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#2fa36b;box-shadow:0 0 0 2px rgba(47,163,107,.2);animation:zyN 2s ease-in-out infinite}
 @keyframes zyN{50%{box-shadow:0 0 0 4px rgba(47,163,107,0)}}
+.zy-rz.zy-bos{background:#ece7dc;color:#8a8f86;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.zy-rz.zy-bos i{background:#a9ada6;box-shadow:none;animation:none}
 .app .facts .zy-hf{background:#e4efe8;color:#1f5a45}
 .zy-alt{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;margin:28px auto 6px;padding:12px 16px 4px;max-width:900px;border-top:1px solid #e3dccb;font:.78rem/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.01em;color:#6b7068;font-variant-numeric:tabular-nums;text-align:center}
 .zy-alt b{color:#1f5a45;font-weight:600}
@@ -46,7 +48,7 @@ function anaSayfaRozet() {
     const ico = a.querySelector('.ico');
     if (!k || !ico) return;
     const r = document.createElement('span');
-    r.className = 'zy-rz'; r.hidden = true; r.title = 'Şu an bu derste çalışanlar';
+    r.className = 'zy-rz zy-bos'; r.title = 'Şu an bu derste çalışanlar';
     r.innerHTML = '<i></i><b>0</b>';
     ico.appendChild(r);
     let hf = null;
@@ -58,7 +60,7 @@ function anaSayfaRozet() {
 function rozetYaz(k, simdi) {
   const o = rozetler[k]; if (!o) return;
   o.r.querySelector('b').textContent = fmt(simdi);
-  o.r.hidden = !(simdi > 0);
+  o.r.classList.toggle('zy-bos', !(simdi > 0)); // kimse yokken soluk gri, biri girince yeşil
 }
 function haftaYaz(k, n) {
   const o = rozetler[k]; if (!o || !o.hf) return;
