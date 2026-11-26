@@ -57,14 +57,13 @@ h1{font-size:1.9rem;color:var(--green)}
 .go{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:.9rem;font-weight:600;color:var(--green);padding-top:6px;border-top:1px dashed var(--line)}
 .go small{color:var(--muted);font-weight:400}
 .note{margin:28px 0 0;color:var(--muted);font-size:.85rem}
-.zy{margin:30px 0 0}
-.zy-g{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.zy-g>div{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 12px;text-align:center}
-.zy-g b{display:block;font-family:var(--serif);font-size:1.6rem;line-height:1.15;color:var(--green);font-variant-numeric:tabular-nums}
-.zy-g span{display:block;margin-top:3px;font-size:.78rem;color:var(--muted)}
-.zy-g .on b::before{content:'';display:inline-block;width:9px;height:9px;margin:0 7px 3px 0;border-radius:50%;background:#2fa36b;box-shadow:0 0 0 3px rgba(47,163,107,.18);vertical-align:middle;animation:zyNabiz 2s ease-in-out infinite}
-@keyframes zyNabiz{50%{box-shadow:0 0 0 6px rgba(47,163,107,0)}}
-@media (max-width:560px){.zy-g{grid-template-columns:repeat(2,1fr)}}
+.zy{margin:26px 0 0;display:flex;justify-content:center}
+.zy-s{display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 0;padding:7px 6px;background:var(--card);border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.zy-s>span{display:inline-flex;align-items:center;gap:5px;padding:0 12px}
+.zy-s>span+span{border-left:1px solid var(--line)}
+.zy-s b{color:var(--green);font-weight:700;font-size:.9rem}
+.zy-s .zy-dot{margin-right:1px}
+@media (max-width:560px){.zy-s{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;border-radius:14px;font-size:.8rem;width:100%;max-width:360px}.zy-s>span{justify-content:center;padding:9px 6px}.zy-s>span+span{border-left:0}.zy-s>span:nth-child(2n){border-left:1px solid var(--line)}.zy-s>span:nth-child(n+3){border-top:1px solid var(--line)}}
 .sig{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:5px 12px calc(5px + env(safe-area-inset-bottom));background:var(--card);border-top:1px solid var(--line);font-family:var(--sans);font-size:.7rem;letter-spacing:.02em;color:var(--muted)}
 .sig b{color:var(--green);font-weight:600}
 .sig i{font-style:normal;opacity:.5}
@@ -327,12 +326,11 @@ h1{font-size:1.9rem;color:var(--green)}
   </div>
 
   <section class="zy" id="ziyaretci" hidden aria-label="Ziyaretçi sayacı">
-    <div class="section-title" style="margin-top:0">Ziyaretçiler</div>
-    <div class="zy-g">
-      <div class="on"><b data-z="simdi">–</b><span>Şu an çevrimiçi</span></div>
-      <div><b data-z="hafta">–</b><span>Son bir hafta</span></div>
-      <div><b data-z="ay">–</b><span>Son bir ay</span></div>
-      <div><b data-z="toplam">–</b><span>Tüm zamanlar</span></div>
+    <div class="zy-s">
+      <span><i class="zy-dot"></i><b data-z="simdi">–</b> çevrimiçi</span>
+      <span><b data-z="hafta">–</b> bu hafta</span>
+      <span><b data-z="ay">–</b> bu ay</span>
+      <span><b data-z="toplam">–</b> toplam ziyaret</span>
     </div>
   </section>
 
